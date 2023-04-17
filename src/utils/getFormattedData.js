@@ -13,35 +13,35 @@ const getTime = (timeString) => {
 };
 
 export const getAirTempDataNoTime = (data) => {
-  return data?.events.map((item) => item.air_temp);
+  return data?.map((item) => item.air_temp);
 };
 
 export const getApparentTempDataNoTime = (data) => {
-  return data?.events.map((item) => item.apparent_temp);
+  return data?.map((item) => item.apparent_temp);
 };
 
 export const getWindSpeedDataNoTime = (data) => {
-  return data?.events.map((item) => item.wind_speed_kmh);
+  return data?.map((item) => item.wind_speed_kmh);
 };
 
 export const getGustSpeedDataNoTime = (data) => {
-  return data?.events.map((item) => item.gust_kmh);
+  return data?.map((item) => item.gust_kmh);
 };
 
 export const getPressureDataNoTime = (data) => {
-  return data?.events.map((item) => Number((item.pressure / 10).toFixed(1)));
+  return data?.map((item) => Number((item.pressure / 10).toFixed(1)));
 };
 
 export const getHumidityDataNoTime = (data) => {
-  return data?.events.map((item) => item.rel_humidity);
+  return data?.map((item) => item.rel_humidity);
 };
 
 export const getOktasDataNoTime = (data) => {
-  return data?.events.map((item) => item.cloud_oktas);
+  return data?.map((item) => item.cloud_oktas);
 };
 
 export const getVisibilityDataNoTime = (data) => {
-  return data?.events.map((item) => Number(item.visibility_km) || null);
+  return data?.map((item) => Number(item.visibility_km) || null);
 };
 
 export const getLatLon = (data) => {
@@ -50,16 +50,14 @@ export const getLatLon = (data) => {
 
 export const getTempData = (data) => {
   const formattedApparentTemp =
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Apparent temperature (°C)",
         time: getTime(item.local_date_time),
         temperature: item.apparent_temp,
       }))
       .reverse() || [];
   const formattedAirTemp =
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Air temperature (°C)",
         time: getTime(item.local_date_time),
         temperature: item.air_temp,
@@ -70,24 +68,21 @@ export const getTempData = (data) => {
 
 export const getWindData = (data) => {
   const formattedWindSpeed =
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Wind speed (km/h)",
         time: getTime(item.local_date_time),
         speed: item.wind_speed_kmh,
       }))
       .reverse() || [];
   const formattedGustSpeed =
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Gust speed (km/h)",
         time: getTime(item.local_date_time),
         speed: item.gust_kmh,
       }))
       .reverse() || [];
   const formattedWindDir =
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Wind direction",
         time: getTime(item.local_date_time),
         speed: item.wind_direction,
@@ -101,8 +96,7 @@ export const getWindData = (data) => {
 
 export const getPressureData = (data) => {
   return (
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Pressure (kPa)",
         time: getTime(item.local_date_time),
         pressure: (item.pressure / 10).toFixed(1),
@@ -113,8 +107,7 @@ export const getPressureData = (data) => {
 
 export const getHumidityData = (data) => {
   return (
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Relative humidity (%)",
         time: getTime(item.local_date_time),
         humidity: item.rel_humidity,
@@ -125,16 +118,14 @@ export const getHumidityData = (data) => {
 
 export const getOktasData = (data) => {
   const formattedOktas =
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Cloud oktas",
         time: getTime(item.local_date_time),
         oktas: item.cloud_oktas,
       }))
       .reverse() || [];
   const formattedCloud =
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Cloud",
         time: getTime(item.local_date_time),
         oktas: item.cloud,
@@ -145,8 +136,7 @@ export const getOktasData = (data) => {
 
 export const getRainTraceData = (data) => {
   return (
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Rain trace after 9am (mm)",
         time: getTime(item.local_date_time),
         trace: Number(item.rain_trace_since_9am) || null,
@@ -157,8 +147,7 @@ export const getRainTraceData = (data) => {
 
 export const getVisibilityData = (data) => {
   return (
-    data?.events
-      .map((item) => ({
+    data?.map((item) => ({
         name: "Visibility (km)",
         time: getTime(item.local_date_time),
         visibility: Number(item.visibility_km) || null,

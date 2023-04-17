@@ -1,9 +1,4 @@
-export const mockWeatherData = {
-  datasource: "Australian Government Bureau of Meteorology",
-  dataset_type: "weather_info",
-  dataset_id: "http://reg.bom.gov.au/fwo/IDN60901/IDN60901.94768.json",
-  time_object: { timestamp: "2023-04-11 10:05:37.185641", timezone: "UTC" },
-  events: [
+export const mockWeatherData = [
     {
       wmo: 94610,
       name: "Perth Airport",
@@ -774,5 +769,4 @@ export const mockWeatherData = {
       wind_direction: "NW",
       wind_speed_kmh: 9,
     },
-  ],
-};
+  ]

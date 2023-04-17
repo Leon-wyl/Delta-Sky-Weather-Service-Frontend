@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
 import { Space, Typography } from "antd";
-import { mockWeatherData } from "../constants/mockWeatherData";
-import {
-  getOktasData,
-  getOktasDataNoTime,
-} from "../utils/getFormattedData";
+import { getOktasData, getOktasDataNoTime } from "../utils/getFormattedData";
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
+import { DataContext } from "../store/DataContext";
 
 const OktasGraph = () => {
   const { Text } = Typography;
 
-  const data = getOktasData(mockWeatherData);
-  const oktasArray = getOktasDataNoTime(mockWeatherData);
+  const { weatherData } = useContext(DataContext);
+
+  const data = getOktasData(weatherData);
+  const oktasArray = getOktasDataNoTime(weatherData);
 
   const config = {
     data,
@@ -39,9 +38,7 @@ const OktasGraph = () => {
         <Space>
           <Text>Max cloud oktas: {_.max(oktasArray)}</Text>
           <Text>Min cloud oktas: {_.min(oktasArray)}</Text>
-          <Text>
-            Average cloud oktas: {_.mean(oktasArray).toFixed(1)}
-          </Text>
+          <Text>Average cloud oktas: {_.mean(oktasArray).toFixed(1)}</Text>
         </Space>
       </div>
     </div>

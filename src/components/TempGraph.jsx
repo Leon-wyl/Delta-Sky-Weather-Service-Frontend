@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
 import { Space, Typography } from "antd";
-import { mockWeatherData } from "../constants/mockWeatherData";
 import {
   getAirTempDataNoTime,
   getApparentTempDataNoTime,
@@ -9,13 +8,16 @@ import {
 } from "../utils/getFormattedData";
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
+import { DataContext } from "../store/DataContext";
 
 const TempGraph = () => {
   const { Text } = Typography;
 
-  const data = getTempData(mockWeatherData);
-  const apparentTempArray = getApparentTempDataNoTime(mockWeatherData);
-  const airTempArray = getAirTempDataNoTime(mockWeatherData);
+  const { weatherData } = useContext(DataContext);
+
+  const data = getTempData(weatherData);
+  const apparentTempArray = getApparentTempDataNoTime(weatherData);
+  const airTempArray = getAirTempDataNoTime(weatherData);
 
   const config = {
     data,

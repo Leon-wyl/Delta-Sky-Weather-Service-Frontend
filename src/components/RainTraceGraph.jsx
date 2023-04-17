@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { mockWeatherData } from "../constants/mockWeatherData";
 import { getRainTraceData } from "../utils/getFormattedData";
 import styles from "./TempGraph.module.css";
+import { DataContext } from "../store/DataContext";
 
 const RainTraceGraph = () => {
-  const data = getRainTraceData(mockWeatherData);
+  const { weatherData } = useContext(DataContext)
+
+  const data = getRainTraceData(weatherData);
 
   const config = {
     data: data,

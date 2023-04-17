@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
 import { Space, Typography } from "antd";
-import { mockWeatherData } from "../constants/mockWeatherData";
 import {
   getPressureData,
   getPressureDataNoTime,
 } from "../utils/getFormattedData";
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
+import { DataContext } from "../store/DataContext";
 
 const PressureGraph = () => {
   const { Text } = Typography;
 
-  const data = getPressureData(mockWeatherData);
-  const pressureArray = getPressureDataNoTime(mockWeatherData);
+  const { weatherData } = useContext(DataContext);
+
+  const data = getPressureData(weatherData);
+  const pressureArray = getPressureDataNoTime(weatherData);
 
   const config = {
     data,
@@ -39,9 +41,7 @@ const PressureGraph = () => {
         <Space>
           <Text>Max pressure: {_.max(pressureArray)} kPa</Text>
           <Text>Min pressure: {_.min(pressureArray)} kPa</Text>
-          <Text>
-            Average pressure: {_.mean(pressureArray).toFixed(1)} kPa
-          </Text>
+          <Text>Average pressure: {_.mean(pressureArray).toFixed(1)} kPa</Text>
         </Space>
       </div>
     </div>
