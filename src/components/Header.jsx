@@ -26,7 +26,6 @@ const Header = () => {
     const filteredData = value
       ? mockAllData.filter((item) => item.wmo === value[0])
       : null;
-    console.log(filteredData, filteredData === []);
     filteredData.length === 0 ? setWeatherData(null) : setWeatherData(filteredData);
   };
 
