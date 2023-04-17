@@ -3,24 +3,22 @@ import { Line } from "@ant-design/plots";
 import { Space, Typography } from "antd";
 import { mockWeatherData } from "../constants/mockWeatherData";
 import {
-  getAirTempDataNoTime,
-  getApparentTempDataNoTime,
-  getTempData,
+  getPressureData,
+  getPressureDataNoTime,
 } from "../utils/getFormattedData";
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
 
-const TempGraph = () => {
+const PressureGraph = () => {
   const { Text } = Typography;
 
-  const data = getTempData(mockWeatherData);
-  const apparentTempArray = getApparentTempDataNoTime(mockWeatherData);
-  const airTempArray = getAirTempDataNoTime(mockWeatherData);
+  const data = getPressureData(mockWeatherData);
+  const pressureArray = getPressureDataNoTime(mockWeatherData);
 
   const config = {
     data,
     xField: "time",
-    yField: "temperature",
+    yField: "pressure",
     seriesField: "name",
     legend: {
       position: "top",
@@ -39,15 +37,10 @@ const TempGraph = () => {
       <Line {...config} className={styles.graph} />
       <div>
         <Space>
-          <Text>Max Air °C: {_.max(airTempArray)}</Text>
-          <Text>Min Air °C: {_.min(airTempArray)}</Text>
-          <Text>Average Air °C: {_.mean(airTempArray).toFixed(1)}</Text>
-        </Space>
-        <Space>
-          <Text>Max Apparent °C: {_.max(apparentTempArray)}</Text>
-          <Text>Min Apparent °C: {_.min(apparentTempArray)}</Text>
+          <Text>Max pressure: {_.max(pressureArray)} kPa</Text>
+          <Text>Min pressure: {_.min(pressureArray)} kPa</Text>
           <Text>
-            Average Apparent °C: {_.mean(apparentTempArray).toFixed(1)}
+            Average pressure: {_.mean(pressureArray).toFixed(1)} kPa
           </Text>
         </Space>
       </div>
@@ -55,4 +48,4 @@ const TempGraph = () => {
   );
 };
 
-export default TempGraph;
+export default PressureGraph;

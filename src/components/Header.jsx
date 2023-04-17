@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <div className={styles.container}>
-      <Title>Weather Yesterday in Australia</Title>
+      <Title>Recent Weather Statistics in Australia</Title>
       <Cascader
         options={weatherStation}
         //onChange={onChange}
