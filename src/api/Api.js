@@ -1,4 +1,4 @@
-import { postAxios } from "./base";
+import { postAxios } from "./base.js";
 
 export const fetchWindEfficiency = async (current_windspeed, max_windspeed) => {
   try {
