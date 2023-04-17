@@ -2,6 +2,7 @@ import React from "react";
 import { Typography } from "antd";
 import { Cascader } from "antd";
 import { weatherStation } from "../constants/weatherStation";
+import styles from "./Header.module.css"
 
 const Header = () => {
   const { Title } = Typography;
@@ -13,8 +14,8 @@ const Header = () => {
     );
 
   return (
-    <div>
-      <Title>Weather Yesterday in Australia</Title>
+    <div className={styles.container}>
+      <Title>Recent Weather Statistics in Australia</Title>
       <Cascader
         options={weatherStation}
         //onChange={onChange}
