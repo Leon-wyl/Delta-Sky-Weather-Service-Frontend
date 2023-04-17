@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
-import { mockWeatherData } from "../constants/mockWeatherData";
+import { Space, Typography, Divider } from "antd";
 import {
   getHumidityData,
   getHumidityDataNoTime,
 } from "../utils/getFormattedData";
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
+import { DataContext } from "../store/DataContext";
 
 const HumidityGraph = () => {
   const { Text } = Typography;
 
-  const data = getHumidityData(mockWeatherData);
-  const pressureArray = getHumidityDataNoTime(mockWeatherData);
+  const { weatherData } = useContext(DataContext);
+
+  const data = getHumidityData(weatherData);
+  const pressureArray = getHumidityDataNoTime(weatherData);
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "humidity",
     seriesField: "name",
@@ -39,11 +43,10 @@ const HumidityGraph = () => {
         <Space>
           <Text>Max humidity: {_.max(pressureArray)} %</Text>
           <Text>Min humidity: {_.min(pressureArray)} %</Text>
-          <Text>
-            Average humidity: {_.mean(pressureArray).toFixed(1)} %
-          </Text>
+          <Text>Average humidity: {_.mean(pressureArray).toFixed(1)} %</Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

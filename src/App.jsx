@@ -1,20 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-import Header from './components/Header';
-import TempGraph from './components/TempGraph';
-import { Contents } from './components/Contents';
+import Header from "./components/Header";
+import { Contents } from "./components/Contents";
+import { DataContext } from "./store/DataContext";
+import { mockWeatherData } from "./constants/mockWeatherData";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [weatherData, setWeatherData] = useState(null);
 
   return (
     <div className="App">
-      <Header />
-      <Contents />
+      <DataContext.Provider value={{ weatherData, setWeatherData }}>
+        <Header />
+        <Contents />
+      </DataContext.Provider>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

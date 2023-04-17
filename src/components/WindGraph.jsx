@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
-import { mockWeatherData } from "../constants/mockWeatherData";
+import { Space, Typography, Divider } from "antd";
 import {
   getWindData,
   getWindSpeedDataNoTime,
@@ -11,13 +10,16 @@ import {
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
 import { fetchWindEfficiency } from "../api/Api";
+import { DataContext } from "../store/DataContext";
 
 const WindGraph = () => {
   const { Text } = Typography;
 
-  const data = getWindData(mockWeatherData);
-  const windSpeedArray = getWindSpeedDataNoTime(mockWeatherData);
-  const gustSpeedArray = getGustSpeedDataNoTime(mockWeatherData);
+  const { weatherData } = useContext(DataContext);
+
+  const data = getWindData(weatherData);
+  const windSpeedArray = getWindSpeedDataNoTime(weatherData);
+  const gustSpeedArray = getGustSpeedDataNoTime(weatherData);
 
   useEffect(() => {
     const getWindEfficiency = async () => {
@@ -31,6 +33,8 @@ const WindGraph = () => {
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "speed",
     seriesField: "name",
@@ -65,6 +69,7 @@ const WindGraph = () => {
           </Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

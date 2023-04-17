@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { mockWeatherData } from "../constants/mockWeatherData";
 import { getRainTraceData } from "../utils/getFormattedData";
 import styles from "./TempGraph.module.css";
+import { Divider } from "antd";
+import { DataContext } from "../store/DataContext";
 
 const RainTraceGraph = () => {
-  const data = getRainTraceData(mockWeatherData);
+  const { weatherData } = useContext(DataContext)
+
+  const data = getRainTraceData(weatherData);
 
   const config = {
     data: data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "trace",
     seriesField: "name",
@@ -27,6 +32,7 @@ const RainTraceGraph = () => {
   return (
     <div className={styles.container}>
       <Line {...config} className={styles.graph} />
+      <Divider />
     </div>
   );
 };

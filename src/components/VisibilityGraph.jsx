@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
-import { mockWeatherData } from "../constants/mockWeatherData";
+import { Space, Typography, Divider } from "antd";
 import {
   getVisibilityData,
   getVisibilityDataNoTime,
 } from "../utils/getFormattedData";
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
+import { DataContext } from "../store/DataContext";
 
 const VisibilityGraph = () => {
   const { Text } = Typography;
 
-  const data = getVisibilityData(mockWeatherData);
-  const visibilityArray = getVisibilityDataNoTime(mockWeatherData);
+  const { weatherData } = useContext(DataContext);
+
+  const data = getVisibilityData(weatherData);
+  const visibilityArray = getVisibilityDataNoTime(weatherData);
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "visibility",
     seriesField: "name",
@@ -44,6 +48,7 @@ const VisibilityGraph = () => {
           </Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };
