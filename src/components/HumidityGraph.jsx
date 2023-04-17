@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
+import { Space, Typography, Divider } from "antd";
 import {
   getHumidityData,
   getHumidityDataNoTime,
@@ -19,6 +19,8 @@ const HumidityGraph = () => {
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "humidity",
     seriesField: "name",
@@ -44,6 +46,7 @@ const HumidityGraph = () => {
           <Text>Average humidity: {_.mean(pressureArray).toFixed(1)} %</Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

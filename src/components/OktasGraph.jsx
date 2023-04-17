@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
+import { Space, Typography, Divider } from "antd";
 import { getOktasData, getOktasDataNoTime } from "../utils/getFormattedData";
 import _ from "lodash";
 import styles from "./TempGraph.module.css";
@@ -16,6 +16,8 @@ const OktasGraph = () => {
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "oktas",
     seriesField: "name",
@@ -41,6 +43,7 @@ const OktasGraph = () => {
           <Text>Average cloud oktas: {_.mean(oktasArray).toFixed(1)}</Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

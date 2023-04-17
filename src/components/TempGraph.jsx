@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
+import { Space, Typography, Divider } from "antd";
 import {
   getAirTempDataNoTime,
   getApparentTempDataNoTime,
@@ -21,6 +21,8 @@ const TempGraph = () => {
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "temperature",
     seriesField: "name",
@@ -53,6 +55,7 @@ const TempGraph = () => {
           </Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
+import { Space, Typography, Divider } from "antd";
 import {
   getPressureData,
   getPressureDataNoTime,
@@ -19,6 +19,8 @@ const PressureGraph = () => {
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "pressure",
     seriesField: "name",
@@ -44,6 +46,7 @@ const PressureGraph = () => {
           <Text>Average pressure: {_.mean(pressureArray).toFixed(1)} kPa</Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

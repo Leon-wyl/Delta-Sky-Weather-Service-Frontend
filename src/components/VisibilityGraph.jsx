@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
+import { Space, Typography, Divider } from "antd";
 import {
   getVisibilityData,
   getVisibilityDataNoTime,
@@ -19,6 +19,8 @@ const VisibilityGraph = () => {
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "visibility",
     seriesField: "name",
@@ -46,6 +48,7 @@ const VisibilityGraph = () => {
           </Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

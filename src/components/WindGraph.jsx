@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Line } from "@ant-design/plots";
-import { Space, Typography } from "antd";
+import { Space, Typography, Divider } from "antd";
 import {
   getWindData,
   getWindSpeedDataNoTime,
@@ -33,6 +33,8 @@ const WindGraph = () => {
 
   const config = {
     data,
+    width: 300,
+    height: 300,
     xField: "time",
     yField: "speed",
     seriesField: "name",
@@ -67,6 +69,7 @@ const WindGraph = () => {
           </Text>
         </Space>
       </div>
+      <Divider />
     </div>
   );
 };

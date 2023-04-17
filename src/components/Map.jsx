@@ -6,7 +6,7 @@ import { DataContext } from "../store/DataContext";
 import styles from './TempGraph.module.css';
 
 const EmbeddedMap = () => {
-  const { Title } = Typography;
+  const { Title, Text } = Typography;
 
   const { weatherData } = useContext(DataContext);
 
@@ -18,10 +18,11 @@ const EmbeddedMap = () => {
 	console.log(typeof weatherData[0].lat)
   if (weatherData[0].lat && weatherData[0].lon) {
     return (
-      <div>
-        <Title level={2}>Location</Title>
+      <div className={styles.mapWrapper}>
+        <Title level={4}>{weatherData[0].name}</Title>
+				<Text>{`lat: ${weatherData[0].lat}, lon: ${weatherData[0].lon}`}</Text>
         <GoogleMap
-          zoom={14}
+          zoom={12}
           center={{ lat: weatherData[0].lat, lng: weatherData[0].lon }}
           mapContainerClassName={styles.mapContainer}
         >
@@ -31,7 +32,7 @@ const EmbeddedMap = () => {
       </div>
     );
   } else {
-		return <div>No Location data </div>
+		return <div>No Location data</div>
 	}
 };
 
