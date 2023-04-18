@@ -30,11 +30,8 @@ const WindGraph = () => {
           windSpeedArray[0],
           _.mean(windSpeedArray)
         );
-        const windEfficiencyJSON = await res.json();
-        const windEfficiency = windEfficiencyJSON?.data?.wind_efficiency
-        console.log(windEfficiency)
-        if (windEfficiency) {
-          setEfficiency((windEfficiency * 100).toFixed(1));
+        if (res.ok) {
+          setEfficiency((res.data.wind_efficiency * 100).toFixed(1));
         }
       }
     };
@@ -79,9 +76,7 @@ const WindGraph = () => {
             Average gust spped: {_.mean(gustSpeedArray).toFixed(1)} km/h
           </Text>
         </Space>
-        <Text>
-          Current wind efficiency: {`${efficiency} %`}
-        </Text>
+        <Text>Current wind efficiency: {`${efficiency} %`}</Text>
       </div>
       <Divider />
     </div>
