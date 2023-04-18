@@ -12,7 +12,7 @@ export const fetchWindEfficiency = async (current_windspeed, max_windspeed) => {
       Accept: "application/json",
     };
     const res = await postAxios(url, dataWind, headers);
-    return res
+    return res;
   } catch (err) {
     return err;
   }
