@@ -15,6 +15,8 @@ import { DataContext } from "../store/DataContext";
 const WindGraph = () => {
   const { Text } = Typography;
 
+  const [efficiency, setEfficiency] = useState(0);
+
   const { weatherData } = useContext(DataContext);
 
   const data = getWindData(weatherData);
@@ -24,12 +26,20 @@ const WindGraph = () => {
   useEffect(() => {
     const getWindEfficiency = async () => {
       if (windSpeedArray[0] && _.mean(windSpeedArray)) {
-        await fetchWindEfficiency(windSpeedArray[0], _.mean(windSpeedArray));
+        const res = await fetchWindEfficiency(
+          windSpeedArray[0],
+          _.mean(windSpeedArray)
+        );
+        const windEfficiency = (await res.json())?.data?.wind_efficiency;
+        console.log(windEfficiency)
+        if (windEfficiency) {
+          setEfficiency((windEfficiency * 100).toFixed(1));
+        }
       }
     };
 
     getWindEfficiency();
-  }, []);
+  }, [weatherData]);
 
   const config = {
     data,
@@ -68,6 +78,9 @@ const WindGraph = () => {
             Average gust spped: {_.mean(gustSpeedArray).toFixed(1)} km/h
           </Text>
         </Space>
+        <Text>
+          Current wind efficiency: {`${efficiency} %`} km/h
+        </Text>
       </div>
       <Divider />
     </div>
