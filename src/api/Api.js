@@ -3,7 +3,7 @@ import { postAxios } from "./base.js";
 export const fetchWindEfficiency = async (current_windspeed, max_windspeed) => {
   try {
     const url =
-      "https://5qmp4gs3ud.execute-api.ap-southeast-2.amazonaws.com/F12A_PAPA/wind";
+      "api2/F12A_PAPA/wind";
     const dataWind = {
       current_windspeed,
       max_windspeed,
@@ -13,6 +13,7 @@ export const fetchWindEfficiency = async (current_windspeed, max_windspeed) => {
       Accept: "application/json",
     };
     const res = await postAxios(url, dataWind, headers);
+    //
     console.log(res);
     console.log(await res.json())
 
