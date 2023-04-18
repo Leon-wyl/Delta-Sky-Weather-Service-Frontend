@@ -14,23 +14,52 @@ export const fetchWindEfficiency = async (current_windspeed, max_windspeed) => {
     // };
     // const res = await postAxios(url, data, headers);
     // console.log(res);
-    const query = "{ getObject(file: 'F14A_DELTA-1681207633') }"
-    const res = await fetch(
-      "https://afzpve4n13.execute-api.ap-southeast-2.amazonaws.com/F14A_DELTA/graphql",
+    const data = JSON.stringify({
+      query: `{
+  
+        contentSearch(q:{
+      
+      operation: AND,
+      
+      subQueries: [
+      
+          {term: "weather"},
+      
+          {term: "sydney"}
+      
+      ]
+      
+        }) {
+      
+          total
+      
+      results {
+      
+      webTitle
+      
+          }
+      
+        }
+      
+      }`
+    });
+    // const query = "{ getObject(file: 'F14A_DELTA-1681207633') }";
+    const response = await fetch(
+      "/api/H09A_FOXTROT/graphql",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
-          'Access-Control-Allow-Origin': "*"
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify({
-          query: query
-        }),
+        body: data,
       }
-    );
-    console.log(res);
-    return res;
+    )
+    console.log(response)
+    
+    const json = await response.json();
+    console.log(json)
   } catch (err) {
     return err;
   }
