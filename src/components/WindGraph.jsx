@@ -30,7 +30,8 @@ const WindGraph = () => {
           windSpeedArray[0],
           _.mean(windSpeedArray)
         );
-        if (res.ok) {
+        console.log(res)
+        if (res.data) {
           setEfficiency((res.data.wind_efficiency * 100).toFixed(1));
         }
       }
