@@ -30,7 +30,8 @@ const WindGraph = () => {
           windSpeedArray[0],
           _.mean(windSpeedArray)
         );
-        const windEfficiency = (await res.json())?.data?.wind_efficiency;
+        const windEfficiencyJSON = await res.json();
+        const windEfficiency = windEfficiencyJSON?.data?.wind_efficiency
         console.log(windEfficiency)
         if (windEfficiency) {
           setEfficiency((windEfficiency * 100).toFixed(1));
@@ -79,7 +80,7 @@ const WindGraph = () => {
           </Text>
         </Space>
         <Text>
-          Current wind efficiency: {`${efficiency} %`} km/h
+          Current wind efficiency: {`${efficiency} %`}
         </Text>
       </div>
       <Divider />
