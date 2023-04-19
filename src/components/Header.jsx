@@ -4,8 +4,7 @@ import { Cascader } from "antd";
 import { weatherStation } from "../constants/weatherStation";
 import styles from "./Header.module.css";
 import { DataContext } from "../store/DataContext";
-import { mockAllData } from "../constants/mockAllData";
-import { fetchWeatherData } from "../api/Api";
+import { fetchWeatherData, fetchNews } from "../api/Api";
 
 const Header = () => {
   const { Title } = Typography;
@@ -20,12 +19,14 @@ const Header = () => {
 
   const onChange = async (value, selectedOptions) => {
     console.log(value, selectedOptions);
-    setLoading(true);
-    if (!value) {
+    if (value) {
+      setLoading(true);
+    } else {
       setWeatherData(null);
       return;
     }
     const weatherData = await fetchWeatherData();
+    const newsData = await fetchNews();
     if (weatherData.data) {
       const filteredData = value
         ? weatherData.data.events.filter((item) => item.wmo === value[0])
