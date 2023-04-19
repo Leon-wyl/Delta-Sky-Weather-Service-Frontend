@@ -5,6 +5,7 @@ import { weatherStation } from "../constants/weatherStation";
 import styles from "./Header.module.css";
 import { DataContext } from "../store/DataContext";
 import { mockAllData } from "../constants/mockAllData";
+import { fetchWeatherData } from "../api/Api";
 
 const Header = () => {
   const { Title } = Typography;
@@ -17,12 +18,13 @@ const Header = () => {
         option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
     );
 
-  const onChange = (value, selectedOptions) => {
+  const onChange = async (value, selectedOptions) => {
     console.log(value, selectedOptions);
     if (!value) {
       setWeatherData(null);
       return;
     }
+    const weatherData = await fetchWeatherData();
     const filteredData = value
       ? mockAllData.filter((item) => item.wmo === value[0])
       : null;

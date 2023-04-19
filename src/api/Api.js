@@ -1,4 +1,4 @@
-import { postAxios } from "./base.js";
+import { postAxios, getAxios } from "./base.js";
 
 export const fetchWindEfficiency = async (current_windspeed, max_windspeed) => {
   try {
@@ -53,3 +53,14 @@ export const fetchNews = async () => {
     return err;
   }
 };
+
+export const fetchWeatherData = async () => {
+  try {
+    const url = "/api3/";
+    const res = await getAxios(url);
+    console.log(res)
+    return res;
+  } catch (err) {
+    return err
+  }
+}
