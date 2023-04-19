@@ -4,7 +4,6 @@ import "./App.css";
 import Header from "./components/Header";
 import { Contents } from "./components/Contents";
 import { DataContext } from "./store/DataContext";
-import { mockWeatherData } from "./constants/mockWeatherData";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
