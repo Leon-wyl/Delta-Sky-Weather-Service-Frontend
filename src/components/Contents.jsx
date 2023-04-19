@@ -8,14 +8,15 @@ import OktasGraph from "./OktasGraph";
 import RainTraceGraph from "./RainTraceGraph";
 import VisibilityGraph from "./VisibilityGraph";
 import { DataContext } from "../store/DataContext";
-import { Empty } from "antd";
+import { Empty, Spin } from "antd";
 import EmbeddedMap from "./Map";
 
 export const Contents = () => {
-  const { weatherData } = useContext(DataContext);
+  const { weatherData, loading } = useContext(DataContext);
   return (
     <>
-      {weatherData ? (
+      {loading && <Spin size="large" />}
+      {weatherData && (
         <div className={styles.container}>
           <EmbeddedMap />
           <TempGraph />
@@ -26,9 +27,8 @@ export const Contents = () => {
           <RainTraceGraph />
           <VisibilityGraph />
         </div>
-      ) : (
-        <Empty />
       )}
+      {!loading && !weatherData && <Empty />}
     </>
   );
 };

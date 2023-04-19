@@ -8,10 +8,13 @@ import { mockWeatherData } from "./constants/mockWeatherData";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="App">
-      <DataContext.Provider value={{ weatherData, setWeatherData }}>
+      <DataContext.Provider
+        value={{ weatherData, setWeatherData, loading, setLoading }}
+      >
         <Header />
         <Contents />
       </DataContext.Provider>
