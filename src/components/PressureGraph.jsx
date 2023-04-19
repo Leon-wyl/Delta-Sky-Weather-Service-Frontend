@@ -16,7 +16,7 @@ const PressureGraph = () => {
 
   const data = getPressureData(weatherData);
   const pressureArray = getPressureDataNoTime(weatherData);
-
+  console.log(typeof pressureArray[0])
   const config = {
     data,
     width: 300,
@@ -24,7 +24,7 @@ const PressureGraph = () => {
     xField: "time",
     yField: "pressure",
     yAxis: {
-      min: _.min(pressureArray),
+      tickCount: 5,
     },
     seriesField: "name",
     legend: {
