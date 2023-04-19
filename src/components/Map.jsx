@@ -22,7 +22,7 @@ const EmbeddedMap = () => {
         <Title level={4}>{weatherData[0].name}</Title>
 				<Text>{`lat: ${weatherData[0].lat}, lon: ${weatherData[0].lon}`}</Text>
         <GoogleMap
-          zoom={12}
+          zoom={11.5}
           center={{ lat: weatherData[0].lat, lng: weatherData[0].lon }}
           mapContainerClassName={styles.mapContainer}
         >
@@ -32,7 +32,7 @@ const EmbeddedMap = () => {
       </div>
     );
   } else {
-		return <div>No Location data</div>
+		return <Text>No Location data</Text>
 	}
 };
 

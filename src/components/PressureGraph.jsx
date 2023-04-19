@@ -23,6 +23,9 @@ const PressureGraph = () => {
     height: 300,
     xField: "time",
     yField: "pressure",
+    yAxis: {
+      min: _.min(pressureArray),
+    },
     seriesField: "name",
     legend: {
       position: "top",

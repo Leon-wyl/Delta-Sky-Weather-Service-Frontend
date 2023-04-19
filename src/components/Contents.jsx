@@ -20,28 +20,28 @@ export const Contents = () => {
       {loading && <Spin size="large" />}
       {weatherData && (
         <div className={styles.container}>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <Embedded />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <Temp />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <Wind />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <Pressure />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <Humidity />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <Oktas />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <RainTrace />
           </Suspense>
-          <Suspense fallback={<div>Loading</div>}>
+          <Suspense fallback={<Spin />}>
             <Visibility />
           </Suspense>
         </div>
