@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
-import TempGraph from "./TempGraph";
 import styles from "./Contents.module.css";
-import WindGraph from "./WindGraph";
-import PressureGraph from "./PressureGraph";
-import HumidityGraph from "./HumidityGraph";
-import OktasGraph from "./OktasGraph";
-import RainTraceGraph from "./RainTraceGraph";
-import VisibilityGraph from "./VisibilityGraph";
+import { Suspense } from "react";
 import { DataContext } from "../store/DataContext";
 import { Empty, Spin } from "antd";
-import EmbeddedMap from "./Map";
+
+const Embedded = React.lazy(() => import("./Map.jsx"));
+const Temp = React.lazy(() => import("./TempGraph.jsx"));
+const Wind = React.lazy(() => import("./WindGraph.jsx"));
+const Pressure = React.lazy(() => import("./PressureGraph.jsx"));
+const Humidity = React.lazy(() => import("./HumidityGraph.jsx"));
+const Oktas = React.lazy(() => import("./OktasGraph.jsx"));
+const RainTrace = React.lazy(() => import("./RainTraceGraph.jsx"));
+const Visibility = React.lazy(() => import("./VisibilityGraph.jsx"));
 
 export const Contents = () => {
   const { weatherData, loading } = useContext(DataContext);
@@ -18,14 +20,30 @@ export const Contents = () => {
       {loading && <Spin size="large" />}
       {weatherData && (
         <div className={styles.container}>
-          <EmbeddedMap />
-          <TempGraph />
-          <WindGraph />
-          <PressureGraph />
-          <HumidityGraph />
-          <OktasGraph />
-          <RainTraceGraph />
-          <VisibilityGraph />
+          <Suspense fallback={<div>Loading</div>}>
+            <Embedded />
+          </Suspense>
+          <Suspense fallback={<div>Loading</div>}>
+            <Temp />
+          </Suspense>
+          <Suspense fallback={<div>Loading</div>}>
+            <Wind />
+          </Suspense>
+          <Suspense fallback={<div>Loading</div>}>
+            <Pressure />
+          </Suspense>
+          <Suspense fallback={<div>Loading</div>}>
+            <Humidity />
+          </Suspense>
+          <Suspense fallback={<div>Loading</div>}>
+            <Oktas />
+          </Suspense>
+          <Suspense fallback={<div>Loading</div>}>
+            <RainTrace />
+          </Suspense>
+          <Suspense fallback={<div>Loading</div>}>
+            <Visibility />
+          </Suspense>
         </div>
       )}
       {!loading && !weatherData && <Empty />}
