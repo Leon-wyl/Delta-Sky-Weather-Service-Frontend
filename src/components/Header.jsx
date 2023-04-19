@@ -10,7 +10,7 @@ import { fetchWeatherData } from "../api/Api";
 const Header = () => {
   const { Title } = Typography;
 
-  const { weatherData, setWeatherData } = useContext(DataContext);
+  const { weatherData, setWeatherData, setLoading } = useContext(DataContext);
 
   const filter = (inputValue, path) =>
     path.some(
@@ -20,21 +20,33 @@ const Header = () => {
 
   const onChange = async (value, selectedOptions) => {
     console.log(value, selectedOptions);
+    setLoading(true);
     if (!value) {
       setWeatherData(null);
       return;
     }
     const weatherData = await fetchWeatherData();
-    const filteredData = value
-      ? mockAllData.filter((item) => item.wmo === value[0])
-      : null;
-    filteredData.length === 0 ? setWeatherData(null) : setWeatherData(filteredData);
+    if (weatherData.data) {
+      const filteredData = value
+        ? weatherData.data.events.filter((item) => item.wmo === value[0])
+        : null;
+      filteredData.length === 0
+        ? setWeatherData(null)
+        : setWeatherData(filteredData);
+    } else {
+      setWeatherData(null);
+    }
+    setLoading(false);
   };
 
   return (
     <div className={styles.container}>
       <Title>Recent Weather Statistics in Australia</Title>
-      {!weatherData &&<Title level={5}>Please Select a weather station to view the data: </Title>}
+      {!weatherData && (
+        <Title level={5}>
+          Please Select a weather station to view the data:{" "}
+        </Title>
+      )}
       <Cascader
         options={weatherStation}
         onChange={onChange}
