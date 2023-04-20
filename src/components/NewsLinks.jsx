@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { List, Divider } from "antd";
+import { DataContext } from "../store/DataContext";
 
 const NewsLinks = () => {
+  const { weatherData } = useContext(DataContext);
   const data = [
     {
       webTitle:
@@ -38,38 +40,19 @@ const NewsLinks = () => {
       webUrl:
         "https://www.theguardian.com/world/2023/apr/18/fighting-in-sudan-in-maps-satellite-imagery-and-video",
     },
-    {
-      webTitle:
-        " Groups fear landlords may use loophole to bypass Queensland’s new once-a-year rent-rise law",
-      webUrl:
-        "https://www.theguardian.com/australia-news/2023/apr/19/groups-fear-landlords-may-use-loophole-to-bypass-queenslands-new-once-a-year-rent-rise-law",
-    },
-    {
-      webTitle:
-        "Ryanair proves clueless about terms of its own Flexi Plus flight offer",
-      webUrl:
-        "https://www.theguardian.com/money/2023/apr/19/ryanair-proves-clueless-about-terms-of-its-own-flexi-plus-flight-offer",
-    },
-    {
-      webTitle:
-        "Solar eclipse chasers descend on tiny Western Australian town to experience ‘wonders of the universe’",
-      webUrl:
-        "https://www.theguardian.com/science/2023/apr/19/2023-total-solar-eclipse-chasers-western-australia-town-exmouth-ningaloo-reef",
-    },
-    {
-      webTitle:
-        "Queensland among worst violators of children’s rights in youth justice system, research finds",
-      webUrl:
-        "https://www.theguardian.com/australia-news/2023/apr/19/queensland-among-worst-violators-of-childrens-rights-in-youth-justice-system-research-finds",
-    },
   ];
   return (
     <>
+      <Title level={4}>Related News in {weatherData[0].name}</Title>
       <List
         size="small"
         bordered
         dataSource={data}
-        renderItem={(item) => <List.Item><a href={item.webUrl}>{item.webTitle}</a></List.Item>}
+        renderItem={(item) => (
+          <List.Item>
+            <a href={item.webUrl}>{item.webTitle}</a>
+          </List.Item>
+        )}
       />
       <Divider />
     </>
