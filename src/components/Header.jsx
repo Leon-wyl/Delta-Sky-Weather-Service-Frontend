@@ -26,6 +26,7 @@ const Header = () => {
       return;
     }
     const weatherData = await fetchWeatherData();
+    const newsData = await fetchNews();
     if (weatherData.data) {
       const filteredData = value
         ? weatherData.data.events.filter((item) => item.wmo === value[0])
