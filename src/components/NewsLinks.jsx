@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { List, Divider } from "antd";
+import { List, Divider, Typography } from "antd";
 import { DataContext } from "../store/DataContext";
 
 const NewsLinks = () => {
   const { weatherData } = useContext(DataContext);
+  const { Title } = Typography;
   const data = [
     {
       webTitle:
