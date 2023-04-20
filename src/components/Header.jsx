@@ -61,7 +61,7 @@ const Header = () => {
             DELTA SKY
           </Typography>
           <Stack direction='row' spacing={2} color='white'>
-            <Typography variant="h6">Standard</Typography>
+            {/* <Typography variant="h6">Standard</Typography> */}
           </Stack>
         </Toolbar>
       </AppBar>

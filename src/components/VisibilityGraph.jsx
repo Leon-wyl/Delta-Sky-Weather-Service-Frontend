@@ -38,7 +38,7 @@ const VisibilityGraph = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', width: '23vw' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '21vw' }}>
       <Line {...config} className={styles.graph} />
       <div>
         <Space>

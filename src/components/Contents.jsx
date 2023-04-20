@@ -37,7 +37,7 @@ export const Contents = () => {
                 <Humidity />
               </Suspense>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '70vw' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '70vw', justifyContent: 'space-between' }}>
               <Suspense fallback={<Spin />}>
                 <Oktas />
               </Suspense>

@@ -31,7 +31,7 @@ const RainTraceGraph = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', width: '23vw' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '21vw' }}>
       <Line {...config} className={styles.graph} />
       <Divider />
     </Box>
