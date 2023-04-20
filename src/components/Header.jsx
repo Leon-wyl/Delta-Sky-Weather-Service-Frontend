@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
-import { Typography } from "antd";
+import Typography from '@mui/material/Typography';
+import { Box, AppBar, IconButton, Toolbar, Stack, Button, ButtonGroup } from '@mui/material';
+import ThunderstormIcon from '@mui/icons-material/ThunderstormOutlined';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import { Cascader } from "antd";
 import { weatherStation } from "../constants/weatherStation";
 import styles from "./Header.module.css";
@@ -7,7 +10,6 @@ import { DataContext } from "../store/DataContext";
 import { fetchWeatherData, fetchNews } from "../api/Api";
 
 const Header = () => {
-  const { Title } = Typography;
 
   const { weatherData, loading, setWeatherData, setLoading, setStation } =
     useContext(DataContext);
@@ -44,23 +46,52 @@ const Header = () => {
 
   return (
     <div className={styles.container}>
-      <Title>Recent Weather Statistics in Australia</Title>
-      {!weatherData && (
-        <Title level={5}>
-          Please Select a weather station to view the data:{" "}
-        </Title>
-      )}
-      <Cascader
-        options={weatherStation}
-        onChange={onChange}
-        disabled={loading}
-        placeholder="Please select a weather station"
-        showSearch={{
-          filter,
-        }}
-        onSearch={(value) => console.log(value)}
-      />
-    </div>
+      <AppBar position='static' color='success' sx={{ mb: '2rem' }}>
+        <Toolbar>
+          <IconButton size='large' aria-label='logo'>
+            <ThunderstormIcon sx={{ color: 'white', fontSize: 40 }} />
+          </IconButton>
+          <Typography
+            variant='h4'
+            color="white"
+            style={{ color: 'white' }}
+            sx={{ flexGrow: 1 }}
+            data-testid='delta-sky'
+          >
+            DELTA SKY
+          </Typography>
+          <Stack direction='row' spacing={2} color='white'>
+            <Typography variant="h6">Standard</Typography>
+          </Stack>
+        </Toolbar>
+      </AppBar>
+
+      <Box sx={{ display: 'flex' }}>
+        <Typography variant="h2">Latest Weather Trends</Typography>
+        <IconButton size='large' aria-label='logo'>
+          <TimelineIcon fontSize='large' />
+        </IconButton>
+      </Box>
+      {
+        !weatherData && (
+          <Typography variant="h5" sx={{ my: '1rem' }}>
+            Please Select a weather station to view the data
+          </Typography>
+        )
+      }
+      <Box sx={{ mb: '2rem' }}>
+        <Cascader
+          options={weatherStation}
+          onChange={onChange}
+          disabled={loading}
+          placeholder="Please select a weather station"
+          showSearch={{
+            filter,
+          }}
+          onSearch={(value) => console.log(value)}
+        />
+      </Box>
+    </div >
   );
 };
 
