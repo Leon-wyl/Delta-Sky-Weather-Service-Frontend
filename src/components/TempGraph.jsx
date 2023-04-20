@@ -43,16 +43,18 @@ const TempGraph = () => {
       <Line {...config} className={styles.graph} />
       <div>
         <Space>
-          <Text>Max Air °C: {_.max(airTempArray)}</Text>
+          <Text>Air °C: {_.mean(airTempArray).toFixed(1)} ({_.min(airTempArray)}/{_.max(airTempArray)})</Text>
+          {/* <Text>Max Air °C: {_.max(airTempArray)}</Text>
           <Text>Min Air °C: {_.min(airTempArray)}</Text>
-          <Text>Average Air °C: {_.mean(airTempArray).toFixed(1)}</Text>
+          <Text>Avg Air °C: {_.mean(airTempArray).toFixed(1)}</Text> */}
         </Space>
         <Space>
-          <Text>Max Apparent °C: {_.max(apparentTempArray)}</Text>
+          <Text>Apparent °C: {_.mean(apparentTempArray).toFixed(1)} ({_.min(apparentTempArray)}/{_.max(apparentTempArray)})</Text>
+          {/* <Text>Max Apparent °C: {_.max(apparentTempArray)}</Text>
           <Text>Min Apparent °C: {_.min(apparentTempArray)}</Text>
           <Text>
-            Average Apparent °C: {_.mean(apparentTempArray).toFixed(1)}
-          </Text>
+            Avg Apparent °C: {_.mean(apparentTempArray).toFixed(1)}
+          </Text> */}
         </Space>
       </div>
       <Divider />
