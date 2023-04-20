@@ -38,7 +38,7 @@ const HumidityGraph = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '15vw' }}>
       <Line {...config} className={styles.graph} />
       <div>
         <Space>
