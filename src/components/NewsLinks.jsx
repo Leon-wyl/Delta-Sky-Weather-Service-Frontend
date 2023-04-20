@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { List } from "antd";
+import { List, Divider } from "antd";
 
 const NewsLinks = () => {
   const data = [
