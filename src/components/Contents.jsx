@@ -8,6 +8,7 @@ import { DataContext } from "../store/DataContext";
 import { Empty, Spin } from "antd";
 import EmbeddedMap from "./Map";
 import NewsLinks from "./NewsLinks";
+import { Box } from '@mui/material'
 
 const Humidity = React.lazy(() => import("./HumidityGraph.jsx"));
 const Oktas = React.lazy(() => import("./OktasGraph.jsx"));
@@ -20,25 +21,29 @@ export const Contents = () => {
     <>
       {loading && <Spin size="large" />}
       {weatherData && (
-        <div className={styles.container}>
-          <EmbeddedMap />
-          <NewsLinks />
-          <TempGraph />
-          <WindGraph />
-          <PressureGraph />
-          <Suspense fallback={<Spin />}>
-            <Humidity />
-          </Suspense>
-          <Suspense fallback={<Spin />}>
-            <Oktas />
-          </Suspense>
-          <Suspense fallback={<Spin />}>
-            <RainTrace />
-          </Suspense>
-          <Suspense fallback={<Spin />}>
-            <Visibility />
-          </Suspense>
-        </div>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <div className={styles.container}>
+            <EmbeddedMap />
+            <TempGraph />
+            <WindGraph />
+            <PressureGraph />
+            <Suspense fallback={<Spin />}>
+              <Humidity />
+            </Suspense>
+            <Suspense fallback={<Spin />}>
+              <Oktas />
+            </Suspense>
+            <Suspense fallback={<Spin />}>
+              <RainTrace />
+            </Suspense>
+            <Suspense fallback={<Spin />}>
+              <Visibility />
+            </Suspense>
+          </div>
+          <Box>
+            <NewsLinks />
+          </Box>
+        </Box>
       )}
       {!loading && !weatherData && <Empty />}
     </>
