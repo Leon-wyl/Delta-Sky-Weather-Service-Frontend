@@ -14,7 +14,7 @@ function App () {
   return (
     <div className="App">
       <DataContext.Provider
-        value={{ weatherData, setWeatherData, loading, setLoading, station, setStation }}
+        value={{ weatherData, setWeatherData, loading, setLoading, station, setStation, page, setPage }}
       >
         <Header />
         <Contents />
