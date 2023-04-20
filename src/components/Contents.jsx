@@ -40,7 +40,7 @@ export const Contents = () => {
               <Visibility />
             </Suspense>
           </div>
-          <Box>
+          <Box style={{ width: '30vw' }}>
             <NewsLinks />
           </Box>
         </Box>
