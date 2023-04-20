@@ -22,7 +22,7 @@ const NewsLinks = () => {
   }, [station])
 
   return (
-    <div>
+    <>
       <Title level={4}>Related News in {weatherData[0].name}</Title>
       <List
         size="small"
@@ -35,7 +35,7 @@ const NewsLinks = () => {
         )}
       />
       <Divider />
-    </div>
+    </>
   );
 };
 
