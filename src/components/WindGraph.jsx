@@ -60,7 +60,7 @@ const WindGraph = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       {data && <Line {...config} className={styles.graph} />}
       <div>
         <Space>
@@ -80,7 +80,7 @@ const WindGraph = () => {
         <Text>Current wind efficiency: {`${efficiency} %`}</Text>
       </div>
       <Divider />
-    </div>
+    </Box>
   );
 };
 
