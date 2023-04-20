@@ -23,7 +23,7 @@ export const fetchNews = async (station) => {
     const url = "/api/H09A_FOXTROT/graphql"
     const dataNews = {
       query: `{
-        contentSearch(q:{
+        contentSearch(pageSize: 6, q:{
           operation: AND,
           subQueries: [
             {term: "` + station + `"},
