@@ -28,7 +28,7 @@ export const fetchNews = async (station) => {
           subQueries: [
             {term: "Sydney - Observatory Hill"},
           ]
-        }) {
+        }, orderby:"newest", orderDate:"published") {
           total
           results {
             webTitle
