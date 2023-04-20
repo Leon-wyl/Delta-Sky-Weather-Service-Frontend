@@ -28,7 +28,7 @@ export const fetchNews = async (station) => {
           subQueries: [
             {term: "` + station + `"},
           ]
-        }, orderBy: newest, orderDate: published) {
+        }, orderBy: relevance, orderDate: published) {
           total
           results {
             webTitle
