@@ -37,15 +37,17 @@ export const Contents = () => {
                 <Humidity />
               </Suspense>
             </Box>
-            <Suspense fallback={<Spin />}>
-              <Oktas />
-            </Suspense>
-            <Suspense fallback={<Spin />}>
-              <RainTrace />
-            </Suspense>
-            <Suspense fallback={<Spin />}>
-              <Visibility />
-            </Suspense>
+            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+              <Suspense fallback={<Spin />}>
+                <Oktas />
+              </Suspense>
+              <Suspense fallback={<Spin />}>
+                <RainTrace />
+              </Suspense>
+              <Suspense fallback={<Spin />}>
+                <Visibility />
+              </Suspense>
+            </Box>
             {/* <PressureGraph /> */}
             <EmbeddedMap />
           </Box>

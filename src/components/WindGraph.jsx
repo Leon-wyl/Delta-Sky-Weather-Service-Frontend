@@ -61,7 +61,7 @@ const WindGraph = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', width: '48%', height: '30rem' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       {data && <Line {...config} className={styles.graph} />}
       <div>
         <Space>
