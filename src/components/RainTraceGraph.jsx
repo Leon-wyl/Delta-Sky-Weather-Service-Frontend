@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Box } from '@mui/material';
 import { Line } from "@ant-design/plots";
 import { getRainTraceData } from "../utils/getFormattedData";
 import styles from "./TempGraph.module.css";
@@ -30,10 +31,10 @@ const RainTraceGraph = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '23vw' }}>
       <Line {...config} className={styles.graph} />
       <Divider />
-    </div>
+    </Box>
   );
 };
 

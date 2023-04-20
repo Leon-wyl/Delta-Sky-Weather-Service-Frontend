@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Box } from '@mui/material';
 import { Line } from "@ant-design/plots";
 import { Space, Typography, Divider } from "antd";
 import {
@@ -37,7 +38,7 @@ const VisibilityGraph = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '23vw' }}>
       <Line {...config} className={styles.graph} />
       <div>
         <Space>
@@ -49,7 +50,7 @@ const VisibilityGraph = () => {
         </Space>
       </div>
       <Divider />
-    </div>
+    </Box>
   );
 };
 

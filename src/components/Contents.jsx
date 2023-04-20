@@ -29,9 +29,9 @@ export const Contents = () => {
           justifyContent: 'space-around',
           alignItems: 'flex-start',
         }}>
-          <Box sx={{ display: 'flex', flexDirection: 'row', width: '70vw', flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', width: '75vw', flexWrap: 'wrap' }}>
             <TempGraph />
-            <Box sx={{ display: 'flex', flexDirection: 'row', width: '70vw' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', width: '75vw' }}>
               <WindGraph />
               <Suspense fallback={<Spin />}>
                 <Humidity />
