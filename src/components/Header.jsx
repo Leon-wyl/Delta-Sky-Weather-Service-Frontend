@@ -9,7 +9,7 @@ import { fetchWeatherData, fetchNews } from "../api/Api";
 const Header = () => {
   const { Title } = Typography;
 
-  const { weatherData, setWeatherData, setLoading, setStation } =
+  const { weatherData, loading, setWeatherData, setLoading, setStation } =
     useContext(DataContext);
 
   const filter = (inputValue, path) =>
@@ -29,7 +29,6 @@ const Header = () => {
       return;
     }
     const weatherData = await fetchWeatherData();
-    const newsData = await fetchNews(selectedOptions[0].label);
     if (weatherData.data) {
       const filteredData = value
         ? weatherData.data.events.filter((item) => item.wmo === value[0])
@@ -54,6 +53,7 @@ const Header = () => {
       <Cascader
         options={weatherStation}
         onChange={onChange}
+        disabled={loading}
         placeholder="Please select a weather station"
         showSearch={{
           filter,
