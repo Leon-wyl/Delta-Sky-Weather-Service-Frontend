@@ -29,7 +29,7 @@ export const Contents = () => {
           justifyContent: 'space-around',
           alignItems: 'flex-start',
         }}>
-          <Box sx={{ display: 'flex', flexDirection: 'row', width: '60vw', flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', width: '70vw', flexWrap: 'wrap' }}>
             <EmbeddedMap />
             <TempGraph />
             <WindGraph />
@@ -47,7 +47,7 @@ export const Contents = () => {
               <Visibility />
             </Suspense>
           </Box>
-          <Box sx={{ width: '30vw' }}>
+          <Box sx={{ width: '20vw' }}>
             <NewsLinks />
           </Box>
         </Box >
