@@ -26,7 +26,7 @@ export const Contents = () => {
           flexDirection: 'row',
           flexWrap: 'wrap',
           alignContent: 'center',
-          justifyContent: 'space-around',
+          justifyContent: 'space-evenly',
           alignItems: 'flex-start',
         }}>
           <Box sx={{ display: 'flex', flexDirection: 'row', width: '75vw', flexWrap: 'wrap' }}>
