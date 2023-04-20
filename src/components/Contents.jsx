@@ -21,8 +21,8 @@ export const Contents = () => {
     <>
       {loading && <Spin size="large" />}
       {weatherData && (
-        <Box sx={{ display: 'flex', flexDirection: 'row', width: '60vw' }}>
-          <div className={styles.container}>
+        <Box>
+          <Box sx={{ display: 'flex', flexDirection: 'row', width: '60vw' }}>
             <EmbeddedMap />
             <TempGraph />
             <WindGraph />
@@ -39,7 +39,7 @@ export const Contents = () => {
             <Suspense fallback={<Spin />}>
               <Visibility />
             </Suspense>
-          </div>
+          </Box>
           <Box sx={{ width: '30vw' }}>
             <NewsLinks />
           </Box>
