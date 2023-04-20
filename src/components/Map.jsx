@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Divider, Typography } from "antd";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { GOOGLE_MAP_API_KEY } from "../constants/Key";
@@ -15,12 +15,12 @@ const EmbeddedMap = () => {
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-	console.log(typeof weatherData[0].lat)
+  console.log(typeof weatherData[0].lat)
   if (weatherData[0].lat && weatherData[0].lon) {
     return (
       <div className={styles.mapWrapper}>
         <Title level={4}>{weatherData[0].name}</Title>
-				<Text>{`lat: ${weatherData[0].lat}, lon: ${weatherData[0].lon}`}</Text>
+        <Text>{`lat: ${weatherData[0].lat}, lon: ${weatherData[0].lon}`}</Text>
         <GoogleMap
           zoom={11.5}
           center={{ lat: weatherData[0].lat, lng: weatherData[0].lon }}
@@ -32,8 +32,8 @@ const EmbeddedMap = () => {
       </div>
     );
   } else {
-		return <Text>No Location data</Text>
-	}
+    return <Text>No Location data</Text>
+  }
 };
 
 export default EmbeddedMap;
