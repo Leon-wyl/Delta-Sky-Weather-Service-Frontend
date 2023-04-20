@@ -31,13 +31,13 @@ export const Contents = () => {
         }}>
           <Box sx={{ display: 'flex', flexDirection: 'row', width: '70vw', flexWrap: 'wrap' }}>
             <TempGraph />
-            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', width: '70vw' }}>
               <WindGraph />
               <Suspense fallback={<Spin />}>
                 <Humidity />
               </Suspense>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '70vw' }}>
               <Suspense fallback={<Spin />}>
                 <Oktas />
               </Suspense>
