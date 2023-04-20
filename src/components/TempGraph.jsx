@@ -21,8 +21,8 @@ const TempGraph = () => {
 
   const config = {
     data,
-    width: 300,
-    height: 300,
+    // width: 300,
+    // height: 300,
     xField: "time",
     yField: "temperature",
     seriesField: "name",
@@ -43,13 +43,13 @@ const TempGraph = () => {
       <Line {...config} className={styles.graph} />
       <div>
         <Space>
-          <Text>Air °C: {_.mean(airTempArray).toFixed(1)} ({_.min(airTempArray)}/{_.max(airTempArray)})</Text>
+          <Text>Air : {_.mean(airTempArray).toFixed(1)}°C ({_.min(airTempArray)}/{_.max(airTempArray)})</Text>
           {/* <Text>Max Air °C: {_.max(airTempArray)}</Text>
           <Text>Min Air °C: {_.min(airTempArray)}</Text>
           <Text>Avg Air °C: {_.mean(airTempArray).toFixed(1)}</Text> */}
         </Space>
         <Space>
-          <Text>Apparent °C: {_.mean(apparentTempArray).toFixed(1)} ({_.min(apparentTempArray)}/{_.max(apparentTempArray)})</Text>
+          <Text>Apparent : {_.mean(apparentTempArray).toFixed(1)}°C ({_.min(apparentTempArray)}/{_.max(apparentTempArray)})</Text>
           {/* <Text>Max Apparent °C: {_.max(apparentTempArray)}</Text>
           <Text>Min Apparent °C: {_.min(apparentTempArray)}</Text>
           <Text>

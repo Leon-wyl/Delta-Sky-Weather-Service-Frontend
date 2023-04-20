@@ -42,8 +42,8 @@ const WindGraph = () => {
 
   const config = {
     data,
-    width: 300,
-    height: 300,
+    // width: 300,
+    // height: 300,
     xField: "time",
     yField: "speed",
     seriesField: "name",
