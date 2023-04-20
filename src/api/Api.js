@@ -26,9 +26,9 @@ export const fetchNews = async (station) => {
         contentSearch(q:{
           operation: AND,
           subQueries: [
-            {term: "Sydney - Observatory Hill"},
+            {term: "${station}"},
           ]
-        }) {
+        }, orderBy: newest, orderDate: published) {
           total
           results {
             webTitle
