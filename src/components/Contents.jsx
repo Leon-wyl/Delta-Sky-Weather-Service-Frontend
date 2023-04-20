@@ -31,7 +31,7 @@ export const Contents = () => {
         }}>
           <Box sx={{ display: 'flex', flexDirection: 'row', width: '70vw', flexWrap: 'wrap' }}>
             <TempGraph />
-            <Box>
+            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
               <WindGraph />
               <Suspense fallback={<Spin />}>
                 <Humidity />
