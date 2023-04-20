@@ -38,7 +38,7 @@ export const fetchNews = async (station) => {
       }`,
     };
     const res = await postAxios(url, dataNews);
-    console.log(res);
+    console.log(res.data.contentSearch.results);
     return res;
   } catch (err) {
     return err;
