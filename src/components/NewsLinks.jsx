@@ -69,7 +69,7 @@ const NewsLinks = () => {
         size="small"
         bordered
         dataSource={data}
-        renderItem={(item) => <List.Item><a href={webUrl}>{item.webTitle}</a></List.Item>}
+        renderItem={(item) => <List.Item><a href={item.webUrl}>{item.webTitle}</a></List.Item>}
       />
       <Divider />
     </>
