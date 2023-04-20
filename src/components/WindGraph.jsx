@@ -61,24 +61,26 @@ const WindGraph = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '48%', height: '30rem' }}>
       {data && <Line {...config} className={styles.graph} />}
       <div>
         <Space>
-          <Text>Max wind speed: {_.max(windSpeedArray)} km/h</Text>
+          <Text>Wind : {_.mean(windSpeedArray).toFixed(1)} km/h ({_.min(windSpeedArray)}/{_.max(windSpeedArray)})</Text>
+          {/* <Text>Max wind speed: {_.max(windSpeedArray)} km/h</Text>
           <Text>Min wind speed: {_.min(windSpeedArray)} km/h</Text>
           <Text>
             Average wind speed: {_.mean(windSpeedArray).toFixed(1)} km/h
-          </Text>
+          </Text> */}
         </Space>
         <Space>
-          <Text>Max gust spped: {_.max(gustSpeedArray)} km/h</Text>
+          <Text>Gust : {_.mean(gustSpeedArray).toFixed(1)} km/h ({_.min(gustSpeedArray)}/{_.max(gustSpeedArray)})</Text>
+          {/* <Text>Max gust spped: {_.max(gustSpeedArray)} km/h</Text>
           <Text>Min gust spped: {_.min(gustSpeedArray)} km/h</Text>
           <Text>
             Average gust spped: {_.mean(gustSpeedArray).toFixed(1)} km/h
-          </Text>
+          </Text> */}
         </Space>
-        <Text>Current wind efficiency: {`${efficiency} %`}</Text>
+        <Text>Efficiency: {`${efficiency} %`}</Text>
       </div>
       <Divider />
     </Box>
