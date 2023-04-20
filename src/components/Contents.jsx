@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { DataContext } from "../store/DataContext";
 import { Empty, Spin } from "antd";
 import EmbeddedMap from "./Map";
+import NewsLinks from "./newsLinks";
 
 const Humidity = React.lazy(() => import("./HumidityGraph.jsx"));
 const Oktas = React.lazy(() => import("./OktasGraph.jsx"));
@@ -21,6 +22,7 @@ export const Contents = () => {
       {weatherData && (
         <div className={styles.container}>
           <EmbeddedMap />
+          <NewsLinks />
           <TempGraph />
           <WindGraph />
           <PressureGraph />
