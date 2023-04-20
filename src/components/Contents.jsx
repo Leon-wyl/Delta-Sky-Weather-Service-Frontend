@@ -21,8 +21,15 @@ export const Contents = () => {
     <>
       {loading && <Spin size="large" />}
       {weatherData && (
-        <Box>
-          <Box sx={{ display: 'flex', flexDirection: 'row', width: '60vw' }}>
+        <Box sx={{
+          display: "flex",
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          alignContent: 'center',
+          justifyContent: 'space-around',
+          alignItems: 'flex-start',
+        }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', width: '60vw', flexWrap: 'wrap' }}>
             <EmbeddedMap />
             <TempGraph />
             <WindGraph />
@@ -43,7 +50,7 @@ export const Contents = () => {
           <Box sx={{ width: '30vw' }}>
             <NewsLinks />
           </Box>
-        </Box>
+        </Box >
       )}
       {!loading && !weatherData && <Empty />}
     </>
