@@ -9,7 +9,8 @@ import { fetchWeatherData, fetchNews } from "../api/Api";
 const Header = () => {
   const { Title } = Typography;
 
-  const { weatherData, setWeatherData, setLoading } = useContext(DataContext);
+  const { weatherData, setWeatherData, setLoading, setStation } =
+    useContext(DataContext);
 
   const filter = (inputValue, path) =>
     path.some(
@@ -21,8 +22,10 @@ const Header = () => {
     console.log(value, selectedOptions);
     if (value) {
       setLoading(true);
+      setStation(selectedOptions[0].label);
     } else {
       setWeatherData(null);
+      setStation(null);
       return;
     }
     const weatherData = await fetchWeatherData();
