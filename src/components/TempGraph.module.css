@@ -1,11 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 35000px;
 }
 
 .mapContainer {
-  width: 50vw;
+  width: 60vw;
   height: 300px;
   margin-top: 10px;
 }
