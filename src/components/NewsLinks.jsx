@@ -37,13 +37,13 @@ const NewsLinks = () => {
         "https://www.theguardian.com/science/2023/apr/20/what-time-is-the-total-solar-eclipse-heres-how-and-when-to-view-it-around-australia",
     },
     {
-      webTitle: "Fighting in Sudan in maps, satellite imagery and video",
+      webTitle: "Fighting in Sudan in maps, satellite imagery and video how and when to view it around Australia",
       webUrl:
         "https://www.theguardian.com/world/2023/apr/18/fighting-in-sudan-in-maps-satellite-imagery-and-video",
     },
   ];
   return (
-    <>
+    <div>
       <Title level={4}>Related News in {weatherData[0].name}</Title>
       <List
         size="small"
@@ -56,7 +56,7 @@ const NewsLinks = () => {
         )}
       />
       <Divider />
-    </>
+    </div>
   );
 };
 
