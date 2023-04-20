@@ -26,7 +26,7 @@ export const fetchNews = async (station) => {
         contentSearch(q:{
           operation: AND,
           subQueries: [
-            {term: "${station}"},
+            {term: "` + station + `"},
           ]
         }, orderBy: newest, orderDate: published) {
           total
@@ -38,7 +38,7 @@ export const fetchNews = async (station) => {
       }`,
     };
     const res = await postAxios(url, dataNews);
-    console.log(res.data.contentSearch.results);
+    console.log(res);
     return res;
   } catch (err) {
     return err;
