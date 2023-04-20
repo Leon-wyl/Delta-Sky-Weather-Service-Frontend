@@ -21,7 +21,7 @@ export const Contents = () => {
     <>
       {loading && <Spin size="large" />}
       {weatherData && (
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', width: '60vw' }}>
           <div className={styles.container}>
             <EmbeddedMap />
             <TempGraph />
